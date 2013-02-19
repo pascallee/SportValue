@@ -1,0 +1,25 @@
+#Maven
+target/
+
+#Eclipse
+.settings/
+.project
+.classpath
+logs/
+.externalToolBuilders/
+*.launch
+bin
+
+#Idea
+.idea
+*.iml
+out
+
+*~
+
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
