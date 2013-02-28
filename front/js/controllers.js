@@ -29,10 +29,17 @@ app.controller('usersController', function($scope, UsersService){
 
     // called when the 'Save' button is clicked
     $scope.saveUser = function(formUser){
-        UsersService.save(formUser).success(function(){
-            $scope.selectedId = formUser.id;
-            resetForm();
-        });
+        if(formUser.id != null) {
+            UsersService.update(formUser.id, formUser).success(function(){
+                $scope.selectedId = formUser.id;
+                resetForm();
+            });
+        } else {
+            UsersService.save(formUser).success(function(){
+                $scope.selectedId = formUser.id;
+                resetForm();
+            });
+        }
     };
 
     // verify if both entered password match or not

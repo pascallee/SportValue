@@ -20,6 +20,9 @@ app.service('UsersService', function($http){
         },
         save : function(formUser){
             return $http.post(API_URI, formUser)
+        },
+        update : function(id, user){
+            return $http.put(API_URI + id, user);
         }
 
     }
