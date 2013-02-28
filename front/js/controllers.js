@@ -31,7 +31,7 @@ app.controller('usersController', function($scope, UsersService){
     $scope.saveUser = function(formUser){
         if(formUser.id != null) {
             UsersService.update(formUser.id, formUser).success(function(){
-                $scope.selectedId = formUser.id;
+                updateUser($scope.users, formUser);
                 resetForm();
             });
         } else {
@@ -54,5 +54,13 @@ app.controller('usersController', function($scope, UsersService){
         $scope.password2 = '';
         $scope.userForm.$setPristine(); // reset the form state to a pristine state
     };
+
+    function updateUser(USERS, formUser) {
+        angular.forEach(USERS, function(user, key){
+            if(user.id === formUser.id){
+                angular.copy(formUser, user);
+            }
+        });
+    }
 
 });
