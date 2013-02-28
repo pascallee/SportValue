@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.tinubu</groupId>
+    <groupId>com.tinubu.first</groupId>
     <artifactId>pomparent</artifactId>
     <version>${sportvalue.version}</version>
     <packaging>pom</packaging>
@@ -19,12 +19,19 @@
 
     <properties>
         <sportvalue.version>1.0-SNAPSHOT</sportvalue.version>
-        <java.version>1.6</java.version>
+        <java.version>1.7</java.version>
         <guava.version>13.0</guava.version>
         <junit.version>4.10</junit.version>
-        <log4j.version>1.6.6</log4j.version>
-        <spring.version>3.0.7.RELEASE</spring.version>
+        <slf4j.version>1.6.6</slf4j.version>
+        <spring.version>3.1.2.RELEASE</spring.version>
+        <servlet.version>2.5</servlet.version>
         <servletapi.version>2.4</servletapi.version>
+        <hibernate.validator.version>4.3.0.Final</hibernate.validator.version>
+        <jackson.version>1.9.8</jackson.version>
+        <spring.integration.version>2.1.0.RELEASE</spring.integration.version>
+        <junit.version>4.9</junit.version>
+        <maven.compiler.source>1.6</maven.compiler.source>
+        <maven.compiler.target>1.6</maven.compiler.target>        
         <maven.build.timestamp.format>yyyyMMdd-HHmm</maven.build.timestamp.format>
         <app.version>${maven.build.timestamp}</app.version>
         <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
@@ -81,17 +88,11 @@
         <dependencies>
 
 
-            <!-- TEST -->
-            <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>${junit.version}</version>
-            </dependency>
-
             <dependency>
                 <groupId>javax.servlet</groupId>
                 <artifactId>servlet-api</artifactId>
                 <version>${servletapi.version}</version>
+                <scope>provided</scope>
             </dependency>
 
 
@@ -134,6 +135,46 @@
                 <artifactId>guava-gwt</artifactId>
                 <version>${guava.version}</version>
             </dependency>
+            
+            <!-- TEST -->
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-log4j12</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>			
+                 
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+            </dependency>
+            
+            
+            <!-- Conversion Java JSON -->
+            <dependency>
+				<groupId>org.codehaus.jackson</groupId>
+				<artifactId>jackson-mapper-asl</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+
+
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-validator</artifactId>
+				<version>${hibernate.validator.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework.integration</groupId>
+				<artifactId>spring-integration-core</artifactId>
+				<version>${spring.integration.version}</version>
+			</dependency>
 
         </dependencies>
 
