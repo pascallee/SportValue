@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:int="http://www.springframework.org/schema/integration"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration.xsd">
+
+    <import resource="infrastructure-applicationContext.xml"/>
+
+
+    <int:gateway id="updateUserGateway"
+                 default-request-channel="incomingUsers"
+                 service-interface="com.tinubu.first.pz.processor.user.UserProcessor"/>
+
+    <int:channel id="incomingUsers" datatype="com.tinubu.first.pz.resources.user.UserRequest"/>
+
+    <int:chain input-channel="incomingUsers">
+        <int:transformer ref="userTransformer" method="transform2User"/>
+        <int:service-activator ref="userService" method="updateUser"/>
+    </int:chain>
+
+    <bean id="userTransformer" class="com.tinubu.first.pz.processor.user.UserTransformer"/>
+
+</beans>
