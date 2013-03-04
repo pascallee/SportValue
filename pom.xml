@@ -78,11 +78,7 @@
         </distributionManagement>
     -->
 
-    <modules>
-        <module>front</module>
-        <module>back</module>
-        <module>war</module>
-    </modules>
+    <modules></modules>
 
     <dependencyManagement>
         <dependencies>
