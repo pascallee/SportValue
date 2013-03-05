@@ -25,11 +25,14 @@ public class UserController {
     @Autowired
     private ApplicationContext applicationContext;
     
+    @Autowired
+    private UserService userService;
+    
+    
     @RequestMapping(value = "", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     public List<User> getUsers() {
-        UserService userService = applicationContext.getBean("userService", UserService.class);
         return userService.getUsers();        
     }
 
@@ -37,14 +40,12 @@ public class UserController {
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     public User getUser(@PathVariable("userId") int userId) {
-        UserService userService = applicationContext.getBean("userService", UserService.class);
         return userService.getUser(userId);
     }
 
     @RequestMapping(value = "/{userId:\\d+}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateUser(@PathVariable("userId") int userId, @RequestBody @Valid User user) {
-        UserService userService = applicationContext.getBean("userService", UserService.class);
         user.setId(userId);
         userService.updateUser(user);
     }
