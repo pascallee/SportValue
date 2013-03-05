@@ -19,19 +19,9 @@
 
     <properties>
         <sportvalue.version>1.0-SNAPSHOT</sportvalue.version>
-        <java.version>1.7</java.version>
         <guava.version>13.0</guava.version>
-        <junit.version>4.10</junit.version>
-        <slf4j.version>1.6.6</slf4j.version>
-        <spring.version>3.1.2.RELEASE</spring.version>
-        <servlet.version>2.5</servlet.version>
-        <servletapi.version>2.4</servletapi.version>
-        <hibernate.validator.version>4.3.0.Final</hibernate.validator.version>
-        <jackson.version>1.9.8</jackson.version>
-        <spring.integration.version>2.1.0.RELEASE</spring.integration.version>
-        <junit.version>4.9</junit.version>
-        <maven.compiler.source>1.6</maven.compiler.source>
-        <maven.compiler.target>1.6</maven.compiler.target>        
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>        
         <maven.build.timestamp.format>yyyyMMdd-HHmm</maven.build.timestamp.format>
         <app.version>${maven.build.timestamp}</app.version>
         <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
@@ -83,43 +73,6 @@
     <dependencyManagement>
         <dependencies>
 
-
-            <dependency>
-                <groupId>javax.servlet</groupId>
-                <artifactId>servlet-api</artifactId>
-                <version>${servletapi.version}</version>
-                <scope>provided</scope>
-            </dependency>
-
-
-            <!-- Versions Spring -->
-
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-core</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-beans</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-aop</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-webmvc</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-web</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-
             <!-- Guava Collection -->
             <dependency>
                 <groupId>com.google.guava</groupId>
@@ -131,47 +84,7 @@
                 <artifactId>guava-gwt</artifactId>
                 <version>${guava.version}</version>
             </dependency>
-            
-            <!-- TEST -->
-			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-log4j12</artifactId>
-				<version>${slf4j.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-api</artifactId>
-				<version>${slf4j.version}</version>
-			</dependency>			
-                 
-            <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>${junit.version}</version>
-            </dependency>
-            
-            
-            <!-- Conversion Java JSON -->
-            <dependency>
-				<groupId>org.codehaus.jackson</groupId>
-				<artifactId>jackson-mapper-asl</artifactId>
-				<version>${jackson.version}</version>
-			</dependency>
-
-
-			<dependency>
-				<groupId>org.hibernate</groupId>
-				<artifactId>hibernate-validator</artifactId>
-				<version>${hibernate.validator.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>org.springframework.integration</groupId>
-				<artifactId>spring-integration-core</artifactId>
-				<version>${spring.integration.version}</version>
-			</dependency>
-
+              
         </dependencies>
 
     </dependencyManagement>
@@ -187,9 +100,8 @@
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>3.0</version>
                     <configuration>
-                        <encoding>${project.build.sourceEncoding}</encoding>
-                        <source>${java.version}</source>
-                        <target>${java.version}</target>
+                        <source>1.7</source>
+                        <target>1.7</target>
                     </configuration>
                 </plugin>
                 <plugin>
