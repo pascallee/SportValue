@@ -1,6 +1,7 @@
-package com.tinubu.first.pz.resources.user;
+package com.tinubu.first.presentation;
 
-import com.tinubu.first.pz.processor.user.UserProcessor;
+import com.tinubu.first.biz.service.UserService;
+import com.tinubu.first.model.User;
 import com.tinubu.first.util.MessageError;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -27,25 +28,25 @@ public class UserController {
     @RequestMapping(value = "", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
-    public List<UserResponse> getUsers() {
-        UserProcessor processor = applicationContext.getBean("getUsersGateway", UserProcessor.class);
-        return processor.getUsers();
+    public List<User> getUsers() {
+        UserService userService = applicationContext.getBean("userService", UserService.class);
+        return userService.getUsers();        
     }
 
     @RequestMapping(value = "/{userId:\\d+}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
-    public UserResponse getUser(@PathVariable("userId") int userId) {
-        UserProcessor processor = applicationContext.getBean("getUserGateway", UserProcessor.class);
-        return processor.getUser(userId);
+    public User getUser(@PathVariable("userId") int userId) {
+        UserService userService = applicationContext.getBean("userService", UserService.class);
+        return userService.getUser(userId);
     }
 
     @RequestMapping(value = "/{userId:\\d+}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateUser(@PathVariable("userId") int userId, @RequestBody @Valid UserRequest user) {
-        UserProcessor processor = applicationContext.getBean("updateUserGateway", UserProcessor.class);
+    public void updateUser(@PathVariable("userId") int userId, @RequestBody @Valid User user) {
+        UserService userService = applicationContext.getBean("userService", UserService.class);
         user.setId(userId);
-        processor.updateUser(user);
+        userService.updateUser(user);
     }
 
     @ExceptionHandler(Throwable.class)

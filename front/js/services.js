@@ -12,7 +12,8 @@
  */
 app.service('UsersService', function($http){
 
-    var API_URI = 'server/service/users/'    // à remplacer à l'url de l'API Web
+    var API_URI = '/server/service/users/'    // à remplacer à l'url de l'API Web
+    
 
     return {
         fetch : function(){

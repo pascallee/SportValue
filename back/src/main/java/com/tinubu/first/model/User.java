@@ -1,5 +1,9 @@
 package com.tinubu.first.model;
 
+import org.hibernate.validator.constraints.Email;
+
+import javax.validation.constraints.NotNull;
+
 /**
  * @author Pascal Lee
  */
@@ -7,12 +11,16 @@ public class User {
 
     private int id;
 
+    @NotNull
     private String firstname;
 
+    @NotNull
     private String lastname;
 
+    @Email
     private String email;
     
+    @NotNull
     private String password;
     
     private boolean isAdmin;
@@ -68,8 +76,8 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    public boolean isIsAdmin() {
+    
+    public boolean getIsAdmin() {
         return isAdmin;
     }
 

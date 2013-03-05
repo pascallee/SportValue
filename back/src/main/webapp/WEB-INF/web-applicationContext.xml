@@ -10,9 +10,11 @@
 
     <context:component-scan base-package="com.tinubu.first"/>
 
-    <import resource="getUsers-flow.xml"/>
-    <import resource="getUser-flow.xml"/>
-    <import resource="updateUser-flow.xml"/>
+    <bean id="userService" class="com.tinubu.first.biz.service.UserServiceImpl">
+        <property name="repository" ref="userRepository"/>
+    </bean>
+
+    <bean id="userRepository" class="com.tinubu.first.data.repository.MemoryUserRepository"/>
 
     <mvc:annotation-driven/>
 
