@@ -50,6 +50,13 @@ public class UserController {
         userService.updateUser(user);
     }
 
+    @RequestMapping(method=RequestMethod.POST)
+    @ResponseStatus(HttpStatus.CREATED)
+    public void createUser(@RequestBody @Valid User user) {
+        userService.createUser(user);
+    }
+    
+    
     @ExceptionHandler(Throwable.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody

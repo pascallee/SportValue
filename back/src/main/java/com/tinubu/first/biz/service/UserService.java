@@ -14,4 +14,7 @@ public interface UserService {
     public User getUser(int userId);
 
     public void updateUser(User user);
+    
+    public void createUser(User user);
+    
 }

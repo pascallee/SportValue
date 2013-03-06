@@ -28,4 +28,8 @@ public class UserServiceImpl implements UserService {
     public void updateUser(User user) {
         repository.updateUser(user);
     }
+    
+    public void createUser(User user) {
+        repository.createUser(user);
+    }
 }

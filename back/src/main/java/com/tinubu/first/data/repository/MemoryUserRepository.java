@@ -16,6 +16,8 @@ import java.util.concurrent.ConcurrentHashMap;
 public class MemoryUserRepository implements UserRepository {
 
     private static Map<Integer, User> users = new ConcurrentHashMap<Integer, User>();
+    
+    private int userCounter=users.size();
 
     static {
         //------- USERS
@@ -38,5 +40,11 @@ public class MemoryUserRepository implements UserRepository {
 
     public void updateUser(User user) {
         users.put(user.getId(), user);
+    }
+    
+    public void createUser(User user) {
+        int newId=++userCounter;
+        user.setId(newId);
+        users.put(newId, user);
     }
 }

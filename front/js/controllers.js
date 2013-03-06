@@ -37,6 +37,7 @@ app.controller('usersController', function($scope, UsersService){
         } else {
             UsersService.save(formUser).success(function(){
                 $scope.selectedId = formUser.id;
+                $scope.users.push(formUser);
                 resetForm();
             });
         }

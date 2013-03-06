@@ -14,4 +14,6 @@ public interface UserRepository {
     public User getUser(int userId);
 
     public void updateUser(User user);
+    
+    public void createUser(User user);
 }
